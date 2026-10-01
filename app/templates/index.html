@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Air Math Vision</title>
+    <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<div class="app-shell">
+    <header class="topbar">
+        <div>
+            <h1>Air Math Vision</h1>
+            <p>شمارش زنده افراد، احراز چهره، ژست و محاسبه با Air Writing</p>
+        </div>
+        <div id="cameraBadge" class="badge danger">CAMERA OFFLINE</div>
+    </header>
+
+    <main class="grid">
+        <section class="video-card card">
+            <div class="card-head">
+                <div>
+                    <h2>دوربین زنده</h2>
+                    <span>Face + Hand + Air Writing</span>
+                </div>
+                <div class="people-counter">
+                    <span>افراد داخل تصویر</span>
+                    <strong id="peopleCount">0</strong>
+                </div>
+            </div>
+            <div class="video-wrap">
+                <img id="videoStream" src="/video" alt="Live camera">
+            </div>
+        </section>
+
+        <aside class="side">
+            <section class="card status-card">
+                <div class="card-head">
+                    <div>
+                        <h2>پردازش زنده</h2>
+                        <span>Real-time state machine</span>
+                    </div>
+                </div>
+
+                <div class="status-row">
+                    <span>State</span>
+                    <strong id="state">MONITORING</strong>
+                </div>
+                <div class="status-row">
+                    <span>Gesture</span>
+                    <strong id="gesture">—</strong>
+                </div>
+                <div class="status-row">
+                    <span>چهره ثبت شده</span>
+                    <strong id="enrolled">خیر</strong>
+                </div>
+                <div class="status-row">
+                    <span>احراز هویت</span>
+                    <strong id="verified">خیر</strong>
+                </div>
+                <div class="status-row">
+                    <span>Similarity</span>
+                    <strong id="similarity">—</strong>
+                </div>
+            </section>
+
+            <section class="card controls">
+                <button id="startBtn" class="btn primary">شروع شمارش / محاسبه</button>
+                <button id="clearBtn" class="btn secondary">پاک کردن عبارت</button>
+                <button id="stopBtn" class="btn ghost">توقف Session</button>
+                <button id="resetFaceBtn" class="btn danger-btn">ثبت مجدد چهره</button>
+            </section>
+
+            <section class="card gesture-help">
+                <div class="gesture-item"><span class="emoji">👍</span><span>آماده / شروع</span></div>
+                <div class="gesture-item"><span class="emoji">☝️</span><span>نوشتن عدد</span></div>
+                <div class="gesture-item"><span class="emoji">✋</span><span>ثبت عدد</span></div>
+                <div class="gesture-item"><span class="emoji">👎</span><span>Undo</span></div>
+
+                <div class="gesture-item operator">
+                    <span class="gesture-code">کوچک</span>
+                    <span><b>+</b> جمع</span>
+                </div>
+                <div class="gesture-item operator">
+                    <span class="gesture-code">کوچک + حلقه</span>
+                    <span><b>−</b> تفریق</span>
+                </div>
+                <div class="gesture-item operator">
+                    <span class="gesture-code">کوچک + حلقه + وسط</span>
+                    <span><b>×</b> ضرب</span>
+                </div>
+                <div class="gesture-item operator">
+                    <span class="gesture-code">۴ انگشت، شست بسته</span>
+                    <span><b>÷</b> تقسیم</span>
+                </div>
+                <div class="gesture-item operator full">
+                    <span class="gesture-code">✊ مشت</span>
+                    <span><b>=</b> مساوی</span>
+                </div>
+            </section>
+        </aside>
+
+        <section class="card expression-card">
+            <div class="section-title">عبارت در حال ساخت</div>
+
+            <div class="live-line">
+                <span>Buffer</span>
+                <strong id="buffer">—</strong>
+            </div>
+
+            <div class="token-list" id="tokens"></div>
+
+            <div class="result-box">
+                <span>Result</span>
+                <strong id="result">—</strong>
+            </div>
+        </section>
+
+        <section class="card events-card">
+            <div class="section-title">Live Event Log</div>
+            <div id="events" class="events"></div>
+        </section>
+    </main>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
